@@ -33,24 +33,19 @@
     ]
   };
 
-  /* ---------- 2. RENDER PROGRAM CARDS ---------- */
+  /* ---------- 2. RENDER PROGRAM MARQUEES ---------- */
   function renderPrograms() {
-    ["ug", "pg"].forEach(function (key) {
-      var panel = document.getElementById("panel-" + key);
-      if (!panel) return;
-      var html = PROGRAM_DATA[key].map(function (name) {
-        return (
-          '<article class="program-card">' +
-            '<span class="program-icon"><svg class="icon" width="18" height="18"><use href="#icon-cap"></use></svg></span>' +
-            "<h3>" + name + "</h3>" +
-            '<a href="#contact" class="program-enquire" data-program="' + name + '" aria-label="Enquire about ' + name + '">' +
-              '<svg class="icon" width="16" height="16"><use href="#icon-arrow"></use></svg>' +
-            "</a>" +
-          "</article>"
-        );
+    function buildTrack(id, items) {
+      var track = document.getElementById(id);
+      if (!track) return;
+      var itemHtml = items.map(function (name) {
+        return '<span class="marquee-item">' + name + '</span><span class="marquee-sep" aria-hidden="true">&times;</span>';
       }).join("");
-      panel.innerHTML = html;
-    });
+      /* content is doubled so the loop animation (translateX -50%) is seamless */
+      track.innerHTML = itemHtml + itemHtml;
+    }
+    buildTrack("marqueeUG", PROGRAM_DATA.ug);
+    buildTrack("marqueePG", PROGRAM_DATA.pg);
 
     /* populate the contact form's program select */
     var ugGroup = document.getElementById("ugOptions");
@@ -61,25 +56,6 @@
     if (pgGroup) {
       pgGroup.innerHTML = PROGRAM_DATA.pg.map(function (n) { return "<option>" + n + "</option>"; }).join("");
     }
-  }
-
-  function initTabs() {
-    var tabButtons = document.querySelectorAll(".tab-btn");
-    tabButtons.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var target = btn.getAttribute("data-tab");
-
-        tabButtons.forEach(function (b) {
-          b.classList.toggle("active", b === btn);
-          b.setAttribute("aria-selected", b === btn ? "true" : "false");
-        });
-
-        document.querySelectorAll(".program-grid").forEach(function (panel) {
-          var isTarget = panel.getAttribute("data-panel") === target;
-          panel.hidden = !isTarget;
-        });
-      });
-    });
   }
 
   /* ---------- 2b. UNIVERSITY COUNTRY FILTER (study-mbbs.html) ---------- */
@@ -296,6 +272,20 @@
     });
   }
 
+  /* ---------- 8b. PREFILL PROGRAM FROM URL (contact.html?program=...) ---------- */
+  function applyProgramFromQuery() {
+    var programSelect = document.getElementById("program");
+    if (!programSelect) return;
+    var params = new URLSearchParams(window.location.search);
+    var value = params.get("program");
+    if (!value) return;
+    var matched = Array.prototype.some.call(programSelect.options, function (opt) {
+      if (opt.value === value || opt.textContent === value) { opt.selected = true; return true; }
+      return false;
+    });
+    if (!matched) programSelect.value = "Other";
+  }
+
   /* ---------- 9. CONTACT FORM VALIDATION ---------- */
   function initContactForm() {
     var form = document.getElementById("enquiryForm");
@@ -436,7 +426,6 @@
   /* ---------- INIT ---------- */
   document.addEventListener("DOMContentLoaded", function () {
     renderPrograms();
-    initTabs();
     initUniversityFilter();
     initUniversityShare();
     initMobileNav();
@@ -445,6 +434,7 @@
     initReveal();
     initBackToTop();
     initWhatsApp();
+    applyProgramFromQuery();
     initContactForm();
     initHeroTyping();
 
