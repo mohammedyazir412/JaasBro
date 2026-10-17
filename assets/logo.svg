@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="logoTitle">
+  <title id="logoTitle">JAAS BRO Education &amp; Career Services crest logo</title>
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F0D27A"/>
+      <stop offset="50%" stop-color="#D6A62C"/>
+      <stop offset="100%" stop-color="#B4870F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Laurel wreaths -->
+  <g fill="none" stroke="url(#goldGrad)" stroke-width="2.4" stroke-linecap="round">
+    <path d="M22 70 C14 90, 14 120, 30 145 C36 150, 42 154, 48 156"/>
+    <path d="M28 78 l-9 3 M27 92 l-10 1 M28 106 l-10 0 M31 120 l-9 -2 M36 133 l-8 -4 M42 145 l-7 -5"/>
+    <path d="M178 70 C186 90, 186 120, 170 145 C164 150, 158 154, 152 156"/>
+    <path d="M172 78 l9 3 M173 92 l10 1 M172 106 l10 0 M169 120 l9 -2 M164 133 l8 -4 M158 145 l7 -5"/>
+  </g>
+
+  <!-- Shield -->
+  <path d="M100 18 L162 38 V96 C162 138 134 168 100 182 C66 168 38 138 38 96 V38 Z"
+        fill="#0B2852" stroke="url(#goldGrad)" stroke-width="3.5"/>
+  <path d="M100 18 L162 38 V96 C162 138 134 168 100 182 C66 168 38 138 38 96 V38 Z"
+        fill="none" stroke="url(#goldGrad)" stroke-width="1" opacity="0.5" transform="scale(0.94)" transform-origin="100 100"/>
+
+  <!-- Quadrant divider -->
+  <line x1="100" y1="34" x2="100" y2="176" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.65"/>
+  <line x1="46" y1="90" x2="154" y2="90" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.65"/>
+
+  <!-- Top-left: Scales of Justice -->
+  <g stroke="url(#goldGrad)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="70" y1="48" x2="70" y2="72"/>
+    <line x1="58" y1="52" x2="82" y2="52"/>
+    <path d="M58 52 L52 64 Q64 68 58 52 Z"/>
+    <path d="M82 52 L88 64 Q76 68 82 52 Z"/>
+    <line x1="63" y1="76" x2="77" y2="76"/>
+  </g>
+
+  <!-- Top-right: Crossed swords -->
+  <g stroke="url(#goldGrad)" stroke-width="2.6" fill="none" stroke-linecap="round">
+    <line x1="118" y1="48" x2="140" y2="76"/>
+    <line x1="140" y1="48" x2="118" y2="76"/>
+    <path d="M116 46 l4 4 M138 46 l-4 4 M116 78 l4 -4 M138 78 l-4 -4"/>
+  </g>
+
+  <!-- Bottom-left: Open book -->
+  <g stroke="url(#goldGrad)" stroke-width="2.4" fill="none" stroke-linejoin="round">
+    <path d="M52 112 C58 108 66 108 70 112 V132 C66 128 58 128 52 132 Z"/>
+    <path d="M88 112 C82 108 74 108 70 112 V132 C74 128 82 128 88 132 Z"/>
+  </g>
+
+  <!-- Bottom-right: Flame -->
+  <path d="M130 108 C124 116 122 122 126 130 C128 134 134 136 138 132 C142 138 148 134 146 126 C150 128 150 118 144 112 C144 118 140 118 140 114 C138 118 134 116 134 110 C132 114 132 106 130 108 Z"
+        fill="url(#goldGrad)"/>
+
+  <!-- Stars -->
+  <g fill="url(#goldGrad)">
+    <path d="M100 172 l1.6 3.4 3.7 0.5 -2.7 2.6 0.6 3.7 -3.2 -1.7 -3.2 1.7 0.6 -3.7 -2.7 -2.6 3.7 -0.5 Z"/>
+  </g>
+</svg>
