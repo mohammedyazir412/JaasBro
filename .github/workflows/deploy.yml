@@ -28,3 +28,4 @@ jobs:
             **/_headers
             **/vercel.json
             **/README.md
+            **/router.php

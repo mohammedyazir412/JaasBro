@@ -7,3 +7,21 @@
   Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
   Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'"
 </IfModule>
+
+# Custom 404 page
+ErrorDocument 404 /404.html
+
+# Clean URLs — serve /page as page.html without changing the address bar,
+# and redirect anyone hitting the .html URL to the clean version.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # someone/something linked straight to the .html file — send them to the clean URL
+  RewriteCond %{THE_REQUEST} \s/+(.+)\.html[\s?] [NC]
+  RewriteRule ^ /%1 [R=301,L]
+
+  # /page (no extension) -> serve page.html's content, URL stays clean
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
